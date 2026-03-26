@@ -11,15 +11,21 @@ A polished Flutter application to explore, favorite, and locally edit characters
 - **Offline Support**: The app caches API responses locally, allowing you to browse characters, favorites, and edited data even without an internet connection.
 - **Modern UI**: A clean, dark-themed interface with smooth loading animations and responsive design.
 
-## 🛠️ Technical Stack
+## Technical Stack & Architecture
 
 - **Framework**: [Flutter](https://flutter.dev/) (latest stable)
-- **State Management**: [Provider](https://pub.dev/packages/provider)
-- **Local Storage**: [SharedPreferences](https://pub.dev/packages/shared_preferences) (for favorites and local edits)
-- **Networking**: [http](https://pub.dev/packages/http)
-- **Architecture**: Modular folder structure (Models, Providers, Screens, Widgets)
+- **State Management**: **Provider**
+  - *Reasoning*: Provider was chosen for its simplicity, low boilerplate, and effective dependency injection. It perfectly handles the app's reactive state (favorites and overrides) while keeping the business logic separated from the UI.
+- **Local Storage**: **SharedPreferences**
+  - *Reasoning*: SharedPreferences is used to store user favorites (as a list of IDs) and local character overrides (as JSON). It provides a fast, lightweight solution for persisting key-value data without the overhead of a full database like SQLite or Hive for this specific use case.
+- **Networking**: **http**
+- **Architecture**: Modular folder structure based on **Separation of Concerns**:
+  - `models/`: Data entities and JSON serialization.
+  - `providers/`: Business logic, API calls, and persistence logic.
+  - `screens/`: Feature-specific UI pages.
+  - `widgets/`: Reusable UI components.
 
-## 📁 Project Structure
+## Project Structure
 
 ```text
 lib/
@@ -41,8 +47,7 @@ lib/
 
 1.  **Clone the repository**:
     ```bash
-    git clone https://github.com/your-username/rick_and_morty_character_explorer.git
-    cd rick_and_morty_character_explorer
+    **https://github.com/Ashik116/Rick-Morty-Pridesys-Task.git**
     ```
 
 2.  **Install dependencies**:
@@ -55,9 +60,10 @@ lib/
     flutter run
     ```
 
-## 📝 Key Requirements Met
+## 📝 Deliverables Met
 
-- **Local Editing**: Users can modify character details which are then merged with API data at runtime.
-- **Persistence**: Both favorites and user-edited overrides are stored locally.
-- **UX Excellence**: Includes loading states (initial + pagination), error handling for API failures, and empty states.
-- **Offline Reliability**: The app gracefully handles network failures by serving cached content.
+- **Git repository** structure maintained.
+- **Proper State Management** implemented via Provider.
+- **Correct Data Merge**: API data and Local Overrides are merged at runtime.
+- **Persistence**: Edits and Favorites persist after app restarts.
+- **Offline Mode**: App works with cached data when the API is unreachable.
