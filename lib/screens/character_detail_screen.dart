@@ -25,8 +25,9 @@ class CharacterDetailScreen extends StatelessWidget {
             leading: const BackButton(color: Colors.black),
             title: Text(
               character.name,
-              style: const TextStyle(color: Colors.black),
+              style: const TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
             ),
+            centerTitle: false,
             actions: [
               IconButton(
                 onPressed: () => provider.toggleFavorite(characterId),
@@ -72,35 +73,31 @@ class CharacterDetailScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 100.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              character.name,
-                              style: const TextStyle(
-                                fontSize: 28,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),
-                              textAlign: TextAlign.center,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            character.name,
+                            style: const TextStyle(
+                              fontSize: 28,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
                             ),
-                            IconButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        EditCharacterScreen(character: character),
-                                  ),
-                                );
-                              },
-                              icon: const Icon(Icons.edit, color: Colors.white),
-                            ),
-                          ],
-                        ),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      EditCharacterScreen(character: character),
+                                ),
+                              );
+                            },
+                            icon: const Icon(Icons.edit, color: Colors.white),
+                          ),
+                        ],
                       ),
                       const SizedBox(height: 8),
                       Row(
